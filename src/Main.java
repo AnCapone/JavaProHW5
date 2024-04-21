@@ -2,7 +2,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        findUnique(toList(new Integer[]{42, 17, 28, 17, 64, 9, 73, 51, 36, 73, 64, 9}));
+        calcOccurance(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
+                "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
+
 
     }
 
@@ -39,5 +41,12 @@ public class Main {
         }
 
         System.out.println(uniqueList);
+    }
+
+    public static void calcOccurance(ArrayList<String> list) {
+        Set<String> uniqueWords = new HashSet<>(list);
+        for (String word : uniqueWords) {
+            System.out.println(word + ": " + countOccurance(list, word));
+        }
     }
 }
