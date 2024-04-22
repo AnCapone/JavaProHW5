@@ -2,9 +2,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
+        List<String[]> wordsOccurrence = findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
                 "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
-
+        System.out.println("TheEnd");
     }
 
     public static int countOccurrence(ArrayList<String> listForCountOccurrence, String word) {
@@ -43,22 +43,40 @@ public class Main {
     }
 
     public static void calcOccurance(ArrayList<String> listForCalculateOccurrence) {
-        Set<String> uniqueWords = new HashSet<>(listForCalculateOccurrence);
-        for (String word : uniqueWords) {
-            System.out.println(word + ": " + countOccurrence(listForCalculateOccurrence, word));
+        ArrayList<String> uniqueWordsList = new ArrayList<>();
+        for (String firstCheckedWordForRepeat : listForCalculateOccurrence) {
+            int count = 0;
+            for (String secondCheckedWordForRepeat : listForCalculateOccurrence) {
+                if (firstCheckedWordForRepeat.equals(secondCheckedWordForRepeat)) {
+                    count++;
+                }
+            }
+            if (!uniqueWordsList.contains(firstCheckedWordForRepeat)) {
+                uniqueWordsList.add(firstCheckedWordForRepeat);
+                System.out.println(firstCheckedWordForRepeat + ": " + count);
+            }
         }
     }
 
-    public static void findOccurrence(ArrayList<String> listForFindOccurrence) {
-        Set<String> uniqueWords = new HashSet<>(listForFindOccurrence);
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String word : uniqueWords) {
-            map.put(word, countOccurrence(listForFindOccurrence, word));
-        }
+    public static ArrayList<String[]> findOccurrence(ArrayList<String> listForFindOccurrence) {
+        ArrayList<String> uniqueWords = new ArrayList<>();
+        ArrayList<String[]> resultStructuredListUniqueWords = new ArrayList<>();
         System.out.println("[");
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println("{name: \"" + entry.getKey() + "\", occurrence: " + entry.getValue() + "}");
+        for (String firstCheckedWordForRepeat : listForFindOccurrence) {
+            int count = 0;
+            if (!uniqueWords.contains(firstCheckedWordForRepeat)) {
+                for (String secondCheckedWordForRepeat : listForFindOccurrence) {
+                    if (firstCheckedWordForRepeat.equals(secondCheckedWordForRepeat)) {
+                        count++;
+                    }
+                }
+                uniqueWords.add(firstCheckedWordForRepeat);
+                resultStructuredListUniqueWords.add(new String[]{firstCheckedWordForRepeat, String.valueOf(count)});
+                System.out.println("{name: \"" + firstCheckedWordForRepeat + "\", occurrence: " + count + "}");
+            }
         }
         System.out.println("]");
+        return resultStructuredListUniqueWords;
+
     }
 }
