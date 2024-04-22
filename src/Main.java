@@ -2,15 +2,15 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
-                "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
-
+//        findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
+//                "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
+    findUnique(toList(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 6, 2, 3, 4}));
 
     }
 
-    public static int countOccurance(ArrayList<String> list, String word) {
+    public static int countOccurrence(ArrayList<String> listForCountOccurrence, String word) {
         int count = 0;
-        for (String s : list) {
+        for (String s : listForCountOccurrence) {
             if (s.equals(word)) {
                 count++;
             }
@@ -18,43 +18,43 @@ public class Main {
         return count;
     }
 
-    public static <T> ArrayList<T> toList(T[] arr) {
-        ArrayList<T> list = new ArrayList<>();
-        Collections.addAll(list, arr);
-        return list;
+    public static <T> ArrayList<T> toList(T[] arrayToConvert) {
+        ArrayList<T> resultArrayList = new ArrayList<>();
+        Collections.addAll(resultArrayList, arrayToConvert);
+        return resultArrayList;
     }
 
-    public static void findUnique(ArrayList<Integer> inputList) {
-        Set<Integer> inputSet = new HashSet<>(inputList);
-        List<Integer> uniqueList = new ArrayList<>();
+    public static void findUnique(ArrayList<Integer> listForFindUniqueElements) {
 
-        for (Integer numberInSet : inputSet) {
+        List<Integer> resultListWithUniqueElements = new ArrayList<>();
+
+        for (Integer firstElementForCheck : listForFindUniqueElements) {
             int count = 0;
-            for (Integer num : inputList) {
-                if (numberInSet.equals(num)) {
+            for (Integer secondElementForCheck : listForFindUniqueElements) {
+                if (firstElementForCheck.equals(secondElementForCheck)) {
                     count++;
                 }
             }
             if (count == 1) {
-                uniqueList.add(numberInSet);
+                resultListWithUniqueElements.add(firstElementForCheck);
             }
         }
 
-        System.out.println(uniqueList);
+        System.out.println(resultListWithUniqueElements);
     }
 
-    public static void calcOccurance(ArrayList<String> list) {
-        Set<String> uniqueWords = new HashSet<>(list);
+    public static void calcOccurance(ArrayList<String> listForCalculateOccurrence) {
+        Set<String> uniqueWords = new HashSet<>(listForCalculateOccurrence);
         for (String word : uniqueWords) {
-            System.out.println(word + ": " + countOccurance(list, word));
+            System.out.println(word + ": " + countOccurrence(listForCalculateOccurrence, word));
         }
     }
 
-    public static void findOccurrence(ArrayList<String> list) {
-        Set<String> uniqueWords = new HashSet<>(list);
+    public static void findOccurrence(ArrayList<String> listForFindOccurrence) {
+        Set<String> uniqueWords = new HashSet<>(listForFindOccurrence);
         HashMap<String, Integer> map = new HashMap<>();
         for (String word : uniqueWords) {
-            map.put(word, countOccurance(list, word));
+            map.put(word, countOccurrence(listForFindOccurrence, word));
         }
         System.out.println("[");
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
