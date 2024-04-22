@@ -2,9 +2,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-//        findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
-//                "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
-    findUnique(toList(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 6, 2, 3, 4}));
+        findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
+                "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
 
     }
 
