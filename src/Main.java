@@ -2,9 +2,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<String[]> wordsOccurrence = findOccurrence(toList(new String[]{"Sun", "Moon", "Cat", "Dog", "House", "Book", "Car", "House", "Friend",
-                "Love", "Music", "Cat", "Sky", "Moon", "Cat", "Love", "Sky", "Phone", "Dog", "Dream"}));
-        System.out.println("TheEnd");
+
     }
 
     public static int countOccurrence(ArrayList<String> listForCountOccurrence, String word) {
@@ -17,8 +15,8 @@ public class Main {
         return count;
     }
 
-    public static <T> ArrayList<T> toList(T[] arrayToConvert) {
-        ArrayList<T> resultArrayList = new ArrayList<>();
+    public static ArrayList<Integer> toList(Integer[] arrayToConvert) {
+        ArrayList<Integer> resultArrayList = new ArrayList<>();
         Collections.addAll(resultArrayList, arrayToConvert);
         return resultArrayList;
     }
